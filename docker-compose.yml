@@ -1,0 +1,23 @@
+
+services:
+  survey-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: survey_web_api
+    depends_on:
+      - DbSurveyApi
+  DbSurveyApi:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 52
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    container_name: db_postgresql_container
+volumes:
+  db_data:
