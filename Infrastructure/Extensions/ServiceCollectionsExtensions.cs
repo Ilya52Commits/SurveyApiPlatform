@@ -9,17 +9,18 @@ namespace Infrastructure.Extensions;
 
 public static class ServiceCollectionsExtensions
 {
-  public static void AddInfrastructureServices(this IServiceCollection services, IConfigurationManager configurationManager, ILogger logger)
+  public static void AddInfrastructureServices(this IServiceCollection services,
+    IConfigurationManager configurationManager, ILogger logger)
   {
     logger.LogInformation("Adding infrastructure services...");
-    
+
     var dbConnectionString = configurationManager.GetConnectionString("DefaultConnection");
-    
+
     logger.LogInformation("Adding context...");
     services.AddDbContext<DbContext, Context>(options =>
       options.UseLazyLoadingProxies()
-        .UseNpgsql(dbConnectionString));
-    
+        .UseNpgsql(dbConnectionString).LogTo(Console.WriteLine, LogLevel.Information));
+
     logger.LogInformation("Adding repository...");
     services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
     services.AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>));

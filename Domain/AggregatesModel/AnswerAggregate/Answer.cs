@@ -5,8 +5,14 @@ using Domain.AggregatesModel.QuestionAggregate;
 
 namespace Domain.AggregatesModel.AnswerAggregate;
 
+/// <summary>
+///     Answer entity
+/// </summary>
 public class Answer : EntityBase, IAggregateRoot
 {
+  /// <summary>
+  ///     Ef constructor
+  /// </summary>
   protected Answer() { }
 
   public Answer(int questionId, string answerText)

@@ -2,8 +2,16 @@ using FastEndpoints;
 
 namespace API.Extensions;
 
+/// <summary>
+///     Service collection extensions
+/// </summary>
 public static class ServiceExtensions
 {
+  /// <summary>
+  ///    Add api services to service collections
+  /// </summary>
+  /// <param name="services"></param>
+  /// <param name="logger"></param>
   public static void AddApiServices(this IServiceCollection services, ILogger logger)
   {
     logger.LogInformation("Adding api services...");

@@ -6,21 +6,19 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Настройка Serilog
 Log.Logger = new LoggerConfiguration()
   .ReadFrom.Configuration(builder.Configuration)
   .Enrich.FromLogContext()
   .CreateLogger();
 
 // Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
 var loggerFactory = LoggerFactory.Create(static loggingBuilder =>
 {
-  loggingBuilder.AddSerilog(); // Интеграция Serilog
+  loggingBuilder.AddSerilog();
 });
 
 var logger = loggerFactory.CreateLogger("Program");

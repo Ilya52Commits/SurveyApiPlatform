@@ -18,6 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		Dockerfile = Dockerfile
 		docker-compose.yml = docker-compose.yml
+		ScriptSql.sql = ScriptSql.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AEE13E97-B11B-4347-A5CE-A9110C102E2B}"

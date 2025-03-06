@@ -19,7 +19,7 @@ public class AnswerEndpoint(IMediator mediator) : Endpoint<AnswerRequest, Answer
   {
     var result =
       await mediator.Send(
-        new AnswerCommand(request.SurveyId, request.InterviewId, request.QuestionId, request.AnswerId),
+        new AnswerCommand(request.InterviewId, request.QuestionId, request.AnswerId),
         cancellationToken);
 
     await this.SendResponse(result, static result => new AnswerResponse(result));
