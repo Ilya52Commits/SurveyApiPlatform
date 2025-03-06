@@ -9,16 +9,16 @@ namespace Application.Extensions;
 /// </summary>
 public static class ServiceExtensions
 {
-  /// <summary>
-  ///     Add application services to service collections
-  /// </summary>
-  /// <param name="services"></param>
-  /// <param name="logger"></param>
-  public static void AddApplicationServices(this IServiceCollection services, ILogger logger)
-  {
-    logger.LogInformation("Adding application services...");
-    
-    logger.LogInformation("Adding mediator...");
-    services.AddMediatR(static cfg => cfg.RegisterServicesFromAssembly(typeof(AnswerCommand).Assembly)); 
-  }
+    /// <summary>
+    ///     Add application services to service collections
+    /// </summary>
+    /// <param name="services"> </param>
+    /// <param name="logger"> </param>
+    public static void AddApplicationServices(this IServiceCollection services, ILogger logger)
+    {
+        logger.LogInformation("Adding application services...");
+
+        logger.LogInformation("Adding mediator...");
+        services.AddMediatR(static cfg => cfg.RegisterServicesFromAssembly(typeof(AnswerCommand).Assembly));
+    }
 }

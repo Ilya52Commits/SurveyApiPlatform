@@ -1,4 +1,8 @@
+-- Создание базы данных
+CREATE DATABASE "DbSurveyApi";
 
+\c DbSurveyApi;
+       
 CREATE TABLE public."Answers" (
     id integer NOT NULL,
     "AnswerText" text NOT NULL,

@@ -8,30 +8,25 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data;
 
-internal sealed class Context : DbContext
+internal sealed class Context(DbContextOptions<Context> options) : DbContext(options)
 {
-  public Context(DbContextOptions<Context> options) : base(options)
-  {
-    Database.EnsureCreated();
-  }
+    public DbSet<Interview> Interviews { get; set; }
+    public DbSet<Answer> Answers { get; set; }
+    public DbSet<Question> Questions { get; set; }
+    public DbSet<Survey> Surveys { get; set; }
+    public DbSet<Result> Results { get; set; }
 
-  public DbSet<Interview> Interviews { get; set; }
-  public DbSet<Answer> Answers { get; set; }
-  public DbSet<Question> Questions { get; set; }
-  public DbSet<Survey> Surveys { get; set; }
-  public DbSet<Result> Results { get; set; }
-  
-  
-  protected override void OnModelCreating(ModelBuilder modelBuilder)
-  {
-    modelBuilder.UseIdentityByDefaultColumns();
-    
-    modelBuilder.ApplyConfiguration(new AnswerConfiguration());
-    modelBuilder.ApplyConfiguration(new QuestionConfiguration());
-    modelBuilder.ApplyConfiguration(new SurveyConfiguration());
-    modelBuilder.ApplyConfiguration(new ResultConfiguration());
-    modelBuilder.ApplyConfiguration(new InterviewConfiguration());
 
-    base.OnModelCreating(modelBuilder);
-  }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.UseIdentityByDefaultColumns();
+
+        modelBuilder.ApplyConfiguration(new AnswerConfiguration());
+        modelBuilder.ApplyConfiguration(new QuestionConfiguration());
+        modelBuilder.ApplyConfiguration(new SurveyConfiguration());
+        modelBuilder.ApplyConfiguration(new ResultConfiguration());
+        modelBuilder.ApplyConfiguration(new InterviewConfiguration());
+
+        base.OnModelCreating(modelBuilder);
+    }
 }

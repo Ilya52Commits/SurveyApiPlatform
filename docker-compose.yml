@@ -1,4 +1,3 @@
-
 services:
   survey-api:
     build:
@@ -18,6 +17,7 @@ services:
       POSTGRES_PASSWORD: 52
     volumes:
       - db_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     container_name: db_postgresql_container
 volumes:
   db_data:
